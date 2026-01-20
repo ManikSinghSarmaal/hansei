@@ -6,16 +6,15 @@ app = Flask(__name__)
 
 template = """
 
-You are a very high IQ Assisatnt assisting you dev boss to examine and introspect what he did at his terminal today. You will be given a set of terminal command logs of his actions he performed over the last 45 mins and you should be
+You are a very high IQ Assisatnt assisting you master to examine and introspect what he did at his terminal today. You will be given a set of terminal command logs of his actions he performed over some time and you should be
 able to understand the intent of his work and develop a mental model of tasks he tried to complete it today. You have to return the following things:
-You have to return a summary of the tasks he tried to complete today and give him a self-reflection of his work today.
+Give him a properly formatted summary of the tasks he started today and give him a self-reflection of his work today.
 
-Boss: {user_message}
-Answer:
+Master's Logs: {user_message}
 """
 
 prompt = ChatPromptTemplate.from_template(template)
-model_name = 'gemma3:1b'
+model_name = 'smallthinker:3b'
 model = OllamaLLM(model=model_name, device='mps')
 chain = prompt | model
 
@@ -50,13 +49,12 @@ def chat():
         })
 
         print(f'Result: {result}')
-        
-        return jsonify({
-            'response': result
-        })
-
         import subprocess,shlex
         subprocess.run(shlex.split(f'ollama stop {model_name}'))
+        return
+        # return jsonify({
+        #     'response': result
+        # })
     
     except Exception as e:
         print(f'Error: {e}')
@@ -89,7 +87,7 @@ if __name__ == '__main__':
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
     
     print(f"Starting server on port {port}")
-    print(f"Chat endpoint: http://0.0.0.0:{port}/chat")
+    print(f"Chat endpoint: localhost:{port}/chat")
     
     # Run on 0.0.0.0 to allow external connections
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='localhost', port=port, debug=True)
