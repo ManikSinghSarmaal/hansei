@@ -1,5 +1,23 @@
 # hansei: Terminal Memory Layer for Developer Workflows
 
+```text
+__                                         ____
+      / /_   ____ _   ____    _____  ___  |___|
+     / __ \ / __ `/  / __ \  / ___/ / _ \ |  | 
+    / / / // /_/ /  / / / / (__  ) /  __/ |  |
+   /_/ /_/ \__,_/  /_/ /_/ /____/  \___/  |__|
+                                          
+             [ Terminal Memory Layer ]
+                
+   >_  __________________________  <
+      [oooooooooooooooooooooooooo]
+      [oo   _       _          oo]
+      [oo  | |___ _(_)_ __ ___ oo]
+      [oo  | / -_) | | '  \___|oo]
+      [oo  |_\___|_|_|_|_|_|   oo]
+      [oo______________________oo]
+       \________________________/
+```
 a tool that knows about your terminal sessions.
 
 # setup
